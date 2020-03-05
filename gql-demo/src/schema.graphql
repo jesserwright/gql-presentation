@@ -1,0 +1,34 @@
+# This is an SDL (Schema Definition Language) file
+
+type Query {
+  todo(id: ID!): Todo
+  todos(filter: StepFilter): [Todo] # filter is optional!
+}
+
+type Mutation {
+  createTodo(input: CreateTodoInput): Todo!
+  deleteTodo(id: ID!): ID!
+  updateTodo(updatedTodo: UpdateTodoInput): Todo!
+}
+
+enum StepFilter {
+  COMPLETED
+  INCOMPLETE
+}
+
+type Todo {
+  id: ID!
+  title: String!
+  completed: Boolean!
+}
+
+input UpdateTodoInput {
+  id: ID!
+  title: String!
+  completed: Boolean!
+}
+
+input CreateTodoInput {
+  title: String!
+  completed: Boolean!
+}
