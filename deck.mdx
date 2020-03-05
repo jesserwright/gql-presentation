@@ -1,0 +1,325 @@
+import { highlight } from '@mdx-deck/themes'
+import { Image } from 'mdx-deck'
+import s from './images/gq.png'
+import popeye from './images/popeye.jpg'
+import hooks from './images/hooks.png'
+import graph from './images/gartner-hype-cycle.png'
+
+export const theme = { ...highlight }
+
+<img src={s} />
+
+<Notes>
+  
+  -Welcome
+  
+</Notes>
+
+---
+
+A Query Language for your API
+
+<Notes>
+
+  - language is how we communicate
+  - sometimes a language makes work more efficient
+  - data interchange
+  - it does not care what the client or server looks like.
+
+</Notes>
+
+---
+
+Database ➡ Server ➡ <span style={{color: '#e535ab'}}>**_GraphQL_**</span> ➡ Client ➡ UI
+
+A language for every concern?
+
+<Notes>
+
+  - Context
+  - Where does GraphQL sit in the stack?
+  - Where REST usually does.
+  - SQL
+  - Java, PHP, C#, nodejs, etc.
+  - HTTP? REST? JavaScript objects? GraphQL!
+  - JavaScript, Swift, Kotlin
+  - HTML/CSS
+
+</Notes>
+
+---
+
+# Type System
+
+spec.Graphql.org
+
+<Steps>
+
+  - Why a type system?
+  - SQL / MongoDB
+  - JavaScript / TypeScript
+  - REST is not typed
+
+</Steps>
+
+<Notes>
+
+- Prevent bugs
+- If GraphQL is to REST what SQL is to MongoDB.
+- Or JavaScript vs TypeScript
+- There is an enforced schema!
+- Type systems take effort to maintain in the moment, but generally worth it in the long term.
+- Eat your veges
+- A type system is a long term investment! More important the larger a team / project
+- APIs are critical to the success of your software and business.
+- A typed contract between client and server
+
+</Notes>
+
+---
+
+<img src={popeye} />
+
+<Notes>
+
+  - GraphQL is not easy to implement. But it's like popeye's spinach.
+
+</Notes>
+
+---
+
+Type
+
+```gql
+type Pet {
+  id: ID!
+  name: String!
+  age: Int!
+  favoriteMeals: [String]
+  isHungry: Boolean!
+  healthLevel: Float
+}
+```
+
+<Notes>
+
+  - An example!
+
+</Notes>
+
+---
+
+Query
+
+```gql
+{
+  pet(id: 42) {
+    id
+    name
+    age
+    favoriteMeals
+    isHungry
+    healthLevel
+  }
+}
+```
+
+<Notes>
+
+  - Field arguments!
+  - GraphQL is a data query language and specification developed internally by Facebook in 2012 before being publicly open sourced in 2015.
+  - It provides an alternative to REST-based architectures with the purpose of increasing developer productivity and minimizing amounts of data transferred.
+  - GraphQL is used in production by hundreds of organizations of all sizes including Facebook, Credit Karma, GitHub, Intuit, PayPal, the New York Times and many more.
+  - GraphQL enables declarative data fetching like React enables declarative UI state
+
+</Notes>
+
+---
+
+Response
+
+```json
+{
+  "pet": {
+    "id": "42",
+    "name": "Bandit",
+    "age": 4,
+    "favoriteMeals": ["split peas", "steel cut oats", "grule"],
+    "isHungry": true,
+    "healthLevel": 0.95
+  }
+}
+```
+---
+
+Type
+
+```gql
+type Todo {
+  id: ID!
+  description: String!
+}
+
+type List {
+  id: ID!
+  title: String!
+  todos: [Todo]
+}
+```
+
+---
+
+Query
+
+```gql
+{
+  list(id: 3) {
+    id
+    title
+    todos {
+      id
+      description
+    }
+  }
+}
+```
+
+---
+
+Response
+
+```json
+{
+  "list": {
+    "id": "",
+    "title": "School",
+    "todos": [
+      {
+        "id": "954",
+        "description": "history homework"
+      },
+      {
+        "id": "234234",
+        "description": "math"
+      }
+    ]
+  }
+}
+```
+
+
+---
+
+# Demo
+
+- SDL, the server file
+- GraphiQL: queries & mutations
+- Simple GraphQL webserver
+
+---
+
+
+<img src={hooks} />
+
+---
+
+# History 🕰
+
+<Steps>
+
+- **2012** Initial development at Facebook, primarily by Lee Byron (@leeb)
+- **2015** Open source
+- **2020** Massive adoption and community growth
+
+</Steps>
+
+---
+# REST vs GraphQL
+
+<Steps>
+
+- Isn't this problem already solved? OpenAPI/Swagger, OData, JSONSchema, etc?
+
+</Steps>
+
+<Notes>
+
+  - The inevitable question...
+  - Those are great tools for doing rest, but still don't
+  - GraphQL can wrap lagacy apis.
+
+</Notes>
+
+---
+
+# Framework Integrations
+
+Rails
+
+Django
+
+Laravel
+
+.NET
+
+And many more:
+
+`Graphql.org/code/`
+
+--- 
+
+# Is GraphQL right for me?
+
+- Additional types to maintain
+- Server object graph complexity
+- Implementing graph relations is non-trivial!
+
+<Notes> 
+
+  - Only you can answer this, but give it a try
+  - Are you greenfield (starting fresh)? I'd say yes!
+
+</Notes>
+
+---
+# Developer Experiance
+
+<Steps>
+
+- Combine or layer with REST endpoints. Could be legacy monolith, a new sevice, or combination. 
+- Built in documentation. No more writing REST api docs!
+- Declarative like SQL so you don’t have to remember what you're asking for... (as with REST)
+- Get everything you need in one request
+
+</Steps>
+
+---
+
+# Is GraphQL mature yet?
+
+
+<img src={graph} />
+
+
+---
+
+# Is GraphQL mature yet?
+
+Linux foundation
+
+Notable members: Apollo, AWS, Facebook, Gatsby, IBM, Intuit, Neo4j, and PayPal.
+
+---
+
+# Discussion & Conversation
+
+# Resources
+
+book.productionreadyGraphql.com
+
+howtoGraphql.com
+
+Graphql.org
+
+GitHub GraphQL API
+
