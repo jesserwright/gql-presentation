@@ -8,7 +8,7 @@
     "help": "mdx-deck"
   },
   "dependencies": {
-    "mdx-deck": "^4.1.0",
-    "gatsby-source-filesystem": "^2.1.48"
+    "gatsby-source-filesystem": "^2.1.48",
+    "mdx-deck": "^4.1.0"
   }
 }
